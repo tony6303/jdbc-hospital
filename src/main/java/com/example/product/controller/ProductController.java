@@ -1,12 +1,20 @@
 package com.example.product.controller;
 
+import java.util.List;
+
+import com.example.product.model.dto.Product;
 import com.example.product.service.ProductService;
-import com.example.product.view.ProductMenu;
 
 public class ProductController {  // 딱 서비스만 호출하고 끝
-	ProductService productService = new ProductService();
+	private final ProductService productService = new ProductService();
 	
-	public void selectAllProduct() {
-		productService.findAllProduct();
+	public List<Product> selectAllProduct() {
+		return productService.findAllProduct();
+			
 	} // selectAllProduct 끝
+
+	public int addProduct(Product product) {
+		
+		return productService.addProduct(product); // 성공시 1 실패시 0 반환
+	} // insertProduct 끝
 }

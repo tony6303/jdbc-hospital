@@ -13,6 +13,11 @@ public class Product {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public Product(String pName, int amount) {
+		this.pName = pName;
+		this.amount = amount;
+	}
+	
 
 
 	public Product(int pId, String pName, int amount, Date receiveDate) {

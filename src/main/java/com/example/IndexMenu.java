@@ -11,36 +11,32 @@ public class IndexMenu {
     private final Scanner sc = new Scanner(System.in);
     private final PatientMenu pm = new PatientMenu();
     private final MedicMenu mm = new MedicMenu();
+    ProductMenu prom = new ProductMenu();
     
 //    private final ProductMenu prom = new ProductMenu();
-    ProductController proControll = new ProductController();
 
     public void mainMenu() {
         while (true) {
-        	System.out.println("=====의료도구 재고관리=====");
-        	System.out.println("1. 재고 조회");
-        	System.out.println("2. 재고 추가");
-        	System.out.println("3. 재고 수정");
-        	System.out.println("4. 재고 삭제");
-        	System.out.println("9. 프로그램 종료");
-        	System.out.print("메뉴 선택 : ");
+            System.out.print("*** 병원 관리 프로그램 ***\n1. 약사\n2. 의사\n3. 수납원" +
+                    "\n4. 재고관리\n5. 환자\n6. 장의사\n0. 끝내기\n메뉴 번호 선택 : ");
             int menu = sc.nextInt();
             switch (menu) {
                 case 1:
-                    proControll.selectAllProduct();  // 사용자의 요청
+                    mm.main();
                     break;
                 case 2:
                     break;
                 case 3:
                     break;
                 case 4:
+                	prom.main();
                     break;
                 case 5:
                     pm.main();
                     break;
                 case 6:
                     break;
-                case 9:
+                case 0:
                     System.out.println("프로그램 종료");
                     return;
                 default:
@@ -48,7 +44,6 @@ public class IndexMenu {
                     break;
             }
         }
-    }// mainMenu 끝
-    
+    } // mainMenu 끝  
     
 }

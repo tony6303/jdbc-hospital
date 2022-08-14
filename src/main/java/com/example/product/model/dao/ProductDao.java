@@ -12,6 +12,16 @@ import com.example.product.model.dto.Product;
 
 
 public class ProductDao {
+	
+	private Connection getConnection() throws SQLException {
+		
+        String url = "jdbc:oracle:thin:@localhost:1521:xe";
+        String username = "HOSPITAL";
+        String password = "HOSPITAL";
+
+        return DriverManager.getConnection(url, username, password);
+    }
+
 	public List<Product> findAll(){	
 	
 	ResultSet rs = null; // SELECT 후 결과값 받아올 객체
@@ -41,16 +51,22 @@ public class ProductDao {
         }
 		
 	} // findAll 끝
-	
-	
-	
-	
-	private Connection getConnection() throws SQLException {
-		
-        String url = "jdbc:oracle:thin:@localhost:1521:xe";
-        String username = "HOSPITAL";
-        String password = "HOSPITAL";
 
-        return DriverManager.getConnection(url, username, password);
-    }
+	public int insert(Product product) {
+		String sql = "INSERT INTO PRO_MANAGE VALUES (pro_manage_seq.NEXTVAL, ?, ?, SYSDATE)";
+		
+		try {
+			PreparedStatement pstmt = getConnection().prepareStatement(sql);
+			pstmt.setString(1, product.getpName());
+			pstmt.setInt(2, product.getAmount());
+			
+			return pstmt.executeUpdate();  // insert 된 행의 개수 반환 (성공시 1개 실패시 0개)
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return 0;
+	} // insert 끝
 }

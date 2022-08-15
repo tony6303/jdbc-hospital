@@ -69,4 +69,21 @@ public class ProductDao {
 		
 		return 0;
 	} // insert 끝
+
+	public int update(int pId, int amount) {
+		String sql ="UPDATE PRO_MANAGE SET AMOUNT = ? WHERE P_ID = ?";
+		
+		try {
+			PreparedStatement pstmt = getConnection().prepareStatement(sql);
+			pstmt.setInt(1, amount);
+			pstmt.setInt(2, pId);
+			
+			return pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
 }

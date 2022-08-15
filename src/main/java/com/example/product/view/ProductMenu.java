@@ -30,6 +30,7 @@ public class ProductMenu {
 	                	addProduct();
 	                    break;
 	                case 3:
+	                	modifyProduct();
 	                    break;
 	                case 4:
 	                    break;
@@ -43,7 +44,23 @@ public class ProductMenu {
 	        }
 	    }// mainMenu 끝
 	 
-	 public void displayProductList(List<Product> list) {
+	 private void modifyProduct() {
+		 selectAllProduct();
+		 System.out.println("수정할 제품의 아이디를 입력하세요");
+		 int modifyId = sc.nextInt();
+		 System.out.println("수정할 수량을 입력하세요");
+		 int modifyAmount = sc.nextInt();
+		 
+		 int result = proControll.modifyProduct(modifyId, modifyAmount);
+		 if(result > 0) {
+			 System.out.println("수정이 완료되었습니다.");
+		 }else {
+			 System.out.println("수정에 실패 했습니다.");
+		 }
+		
+	}
+
+	public void displayProductList(List<Product> list) {
 	    	System.out.println("\n조회된 전체 회원정보는 다음과 같습니다.");
 			System.out.println("\n재품아이디\t제품이름\t현재수량\t입고날짜");
 			System.out.println("---------------------------------");

@@ -22,6 +22,11 @@ public class ProductService {
 	public int addProduct(Product product) {
 		int result = productDao.insert(product); // 성공시 1 실패시 0 반환		
 		return result;
+	}
+
+	public int modifyProduct(int pId, int amount) {
+		int result = productDao.update(pId, amount);
+		return result;
 	}	
 	
 }

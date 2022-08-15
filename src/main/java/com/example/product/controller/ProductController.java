@@ -21,4 +21,8 @@ public class ProductController {  // 딱 서비스만 호출하고 끝
 	public int modifyProduct(int pId, int amount) {
 		return productService.modifyProduct(pId, amount); 
 	} // modifyProduct 끝
+
+	public int deleteProduct(int pId) {
+		return productService.deleteProduct(pId);
+	} // deleteProduct 끝
 }

@@ -1,6 +1,5 @@
 package com.example.product.view;
 
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -33,6 +32,7 @@ public class ProductMenu {
 	                	modifyProduct();
 	                    break;
 	                case 4:
+	                	deleteProduct();
 	                    break;
 	                case 9:
 	                    
@@ -44,7 +44,20 @@ public class ProductMenu {
 	        }
 	    }// mainMenu 끝
 	 
-	 private void modifyProduct() {
+	 private void deleteProduct() {
+		 selectAllProduct();
+		 System.out.println("삭제할 제품의 아이디를 입력하세요");
+		 int deleteId = sc.nextInt();
+		 
+		 int result = proControll.deleteProduct(deleteId);
+		 if(result > 0) {
+			 System.out.println("삭제가 완료 되었습니다.");
+		 }else {
+			 System.out.println("삭제에 실패 했습니다.");
+		 }
+	} // deleteProduct 끝
+
+	private void modifyProduct() {
 		 selectAllProduct();
 		 System.out.println("수정할 제품의 아이디를 입력하세요");
 		 int modifyId = sc.nextInt();
@@ -58,7 +71,7 @@ public class ProductMenu {
 			 System.out.println("수정에 실패 했습니다.");
 		 }
 		
-	}
+	} // modifyProduct 끝
 
 	public void displayProductList(List<Product> list) {
 	    	System.out.println("\n조회된 전체 회원정보는 다음과 같습니다.");
@@ -68,12 +81,16 @@ public class ProductMenu {
 			for (Product pro : list) {
 				System.out.println(pro.toString());
 			}
-	    }
+	    } // displayProductList 끝
 	 
 	 private void selectAllProduct() {
 		 List<Product> list = proControll.selectAllProduct();
-		 displayProductList(list);
-	 }
+		 if(list.isEmpty()) {
+				System.out.println("조회된 재고가 없습니다");
+			}else {
+				displayProductList(list); // 서비스에 출력문이 있어서 Menu로 옮겼음.
+			}
+	 } // selectAllProduct 끝 
 	
 	 
 	 private void addProduct() {
@@ -94,7 +111,7 @@ public class ProductMenu {
 	        } else if (result == 0) {
 	            System.out.println("재고 추가를 실패했습니다.");
 	        }
-	    }
+	    } // addProduct 끝
 	 
 	
 }

@@ -33,13 +33,7 @@ public class ProductDao {
 			
 			rs = pstmt.executeQuery();
 			
-			while(rs.next()) {
-//				Product pro = new Product();
-//				pro.setpId(rs.getInt("p_id"));
-//				pro.setpName(rs.getString("p_name"));
-//				pro.setAmount(rs.getInt("amount"));
-//				pro.setReceiveDate(rs.getDate("receive_date"));
-				
+			while(rs.next()) {				
 				list.add(new Product(rs.getInt("p_id"), rs.getString("p_name"), rs.getInt("amount"), rs.getDate("receive_date")));
 				
 			}
@@ -85,5 +79,21 @@ public class ProductDao {
 		}
 		
 		return 0;
-	}
+	} // update 끝
+
+	public int delete(int pId) {
+		String sql = "DELETE FROM PRO_MANAGE WHERE P_ID = ?";
+		
+		try {
+			PreparedStatement pstmt = getConnection().prepareStatement(sql);
+			pstmt.setInt(1, pId);
+			
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return 0;
+	} // delete 끝
+	
 }

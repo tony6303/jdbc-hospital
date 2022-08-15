@@ -11,7 +11,7 @@ public class IndexMenu {
     private final Scanner sc = new Scanner(System.in);
     private final PatientMenu pm = new PatientMenu();
     private final MedicMenu mm = new MedicMenu();
-    ProductMenu prom = new ProductMenu();
+    private final ProductMenu prom = new ProductMenu();
     
 //    private final ProductMenu prom = new ProductMenu();
 

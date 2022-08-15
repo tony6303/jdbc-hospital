@@ -1,7 +1,10 @@
 package com.example.product.model.dto;
 
 import java.util.Date;
-
+/**
+ * @author tony6(이대엽)
+ *
+ */
 public class Product {
 	private int pId;
 	private String pName;
